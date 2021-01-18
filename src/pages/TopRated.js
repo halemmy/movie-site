@@ -41,7 +41,7 @@ const TopRated = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     centerMode: true,
     centerPadding: '50px',
     autoplay: true,
@@ -67,8 +67,9 @@ const TopRated = () => {
               <Slider {...settings}>
                 {movies.map((movie) => (
                   <Card
+                    key={movie.id}
                       // style={{ width: 25 % visualViewport, bg: "dark" }}
-                      mr-auto>
+                    className="mr-auto">
 
                       <Card.Body>
                           <Card.Img className="pb-2"
@@ -88,7 +89,7 @@ const TopRated = () => {
             )}       
                 
                  
-                <div class="mx-auto" style={{ height:"50px" }}></div>
+                <div className="mx-auto" style={{ height:"50px" }}></div>
             </Container>                    
         </div>
         

@@ -59,7 +59,7 @@ const Upcoming = () => {
               </Row>
           </Container>    
           
-          <div class="mx-auto" style={{ height: "20px" }}></div>
+          <div className="mx-auto" style={{ height: "20px" }}></div>
             
           <Container>
             {loading ? (
@@ -72,7 +72,7 @@ const Upcoming = () => {
             ) : (
               <CardColumns>
                 {filteredMovie.map((movie) => (
-                  <Card mr-auto style={{weight:"30px"}}> 
+                  <Card key={movie.id} className="mr-auto" style={{weight:"30px"}}> 
                       <Card.Body>
                           <Card.Img className="pb-2" src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="slide" />
                           <p><strong>{movie.title}</strong></p>
