@@ -43,43 +43,50 @@ const Upcoming = () => {
     
     return (
         <div>
-            <Container>
-            <hr/>
             
-            <Container>
-                <Row>
-                    <Col>
-                        <h4>Upcoming</h4>
-                        <p>Wating for your next inspiration? Check here.</p></Col>
-                    <Col>
-                            <input label="movie name" type="text" onChange={(event) => setFilterTerm(event.target.value)} value={filterTerm} />
-                            <p><small><em>Filter by typing movie name.</em></small></p>
-                        </Col></Row>
-                </Container>    
-                <div class="mx-auto" style={{ height: "20px" }}></div>
-
-            <CardColumns>
-    
-            {loading? 
-            <Spinner animation="border" role="status">      
-            <span className="sr-only">Loading...</span>
-            </Spinner>           
             
-            :filteredMovie.map((movie) => (
-                <Card mr-auto style={{weight:"30px"}}> 
-                    <Card.Body>
-                        <Card.Img className="pb-2" src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="slide" />
-                        <p><strong>{movie.title}</strong></p>
-                            <p className="py-0"><small>
-                            <strong>Released on: </strong>{movie.release_date.match(/\d+/)}<br/>
-                            <strong>Storyline: </strong>{movie.overview}
-                        </small></p>
-                        
-                        <Button variant="outline-dark" size="sm" href={`http://localhost:3000/movie/${movie.id}`}>Watch</Button></Card.Body>
-                        </Card>))}
-                    </CardColumns>   
-                    
-            </Container>                    
+          <hr/>
+          <Container>
+              <Row>
+                  <Col>
+                      <h4>Upcoming</h4>
+                      <p>Wating for your next inspiration? Check here.</p></Col>
+                  <Col>
+                          <input label="movie name" type="text" onChange={(event) => setFilterTerm(event.target.value)} value={filterTerm} />
+                          <p><small><em>Filter by typing movie name.</em></small></p>
+                      </Col>
+              </Row>
+          </Container>    
+          
+          <div class="mx-auto" style={{ height: "20px" }}></div>
+            
+          <Container>
+            {loading ? (
+              <div className="ratio ratio-16x9 d-flex justify-content-center align-items-center">
+                <Spinner animation="border" role="status" style={{position: 'static'}}>      
+                  <span className="sr-only">Loading...</span>
+                </Spinner>
+              </div>        
+   
+            ) : (
+              <CardColumns>
+                {filteredMovie.map((movie) => (
+                  <Card mr-auto style={{weight:"30px"}}> 
+                      <Card.Body>
+                          <Card.Img className="pb-2" src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="slide" />
+                          <p><strong>{movie.title}</strong></p>
+                              <p className="py-0"><small>
+                              <strong>Released on: </strong>{movie.release_date.match(/\d+/)}<br/>
+                              <strong>Storyline: </strong>{movie.overview}
+                          </small></p>
+                          
+                          <Button variant="outline-dark" size="sm" href={`http://localhost:3000/movie/${movie.id}`}>Watch</Button>
+                      </Card.Body>
+                  </Card>))
+                }
+              </CardColumns>   
+            )}
+          </Container>                    
         </div>
         
     );
