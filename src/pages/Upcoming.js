@@ -4,9 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Card, Spinner, CardColumns, Button, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_URL = process.env.REACT_APP_TMDB_API_URL;
+
 const Upcoming = () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const API_URL = process.env.REACT_APP_TMDB_API_URL;
     const [movies, setMovies] = useState([]);
     const [filteredMovie, setFilteredMovie] = useState([]);
     const [filterTerm, setFilterTerm] = useState("");
@@ -34,7 +35,7 @@ const Upcoming = () => {
             setLoading(false);
         }
         fetchData();
-    }, [API_KEY, API_URL]);
+    }, []);
 
     useEffect(() => {
         let newMovies = movies.filter((movie) => movie.title.toLowerCase().startsWith(filterTerm))

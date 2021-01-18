@@ -6,10 +6,10 @@ import Upcoming from './Upcoming';
 import { Spinner, Carousel } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_URL = process.env.REACT_APP_TMDB_API_URL;
 
 const WatchNow = () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const API_URL = process.env.REACT_APP_TMDB_API_URL;
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setErrorMsg] = useState([]);
@@ -33,7 +33,7 @@ const WatchNow = () => {
             setLoading(false);
         }
         fetchData();
-    }, [API_KEY, API_URL]);
+    }, []);
 
 
     return (

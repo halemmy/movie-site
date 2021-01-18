@@ -7,10 +7,10 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_URL = process.env.REACT_APP_TMDB_API_URL;
 
 const TopRated = () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const API_URL = process.env.REACT_APP_TMDB_API_URL;
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setErrorMsg] = useState([]);
@@ -34,7 +34,7 @@ const TopRated = () => {
             setLoading(false);
         }
         fetchData();
-    }, [API_KEY, API_URL]);
+    }, []);
 
     var settings = {
     dots: true,
