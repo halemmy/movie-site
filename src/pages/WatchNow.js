@@ -41,22 +41,22 @@ const WatchNow = () => {
         <div>
           <>
             {loading ? (
-              <div className="ratio ratio-16x9 d-flex justify-content-center align-items-center">
+              <div className="ratio ratio-carousel d-flex justify-content-center align-items-center">
                 <Spinner animation="border" role="status" style={{position: 'static'}}>      
                 <span className="sr-only">Loading...</span>
                 </Spinner>
               </div>
             ) : (
             <Carousel>    
-              {movies.map((movie,index) => (
+              {movies.slice(0, 5).map((movie,index) => (
                   <Carousel.Item key={index}>
-                    <div className="ratio ratio-16x9">
-                      <img className="d-block w-100" src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="slide" />
+                    <div className="ratio ratio-carousel">
+                      <img className="d-block w-100" style={{height: 'inherit'}} src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="slide" />
                     </div>
                           <Carousel.Caption>
                               <a href={`http://localhost:3000/movie/${movie.id}`}><h3 style={{color:"white"}}>{movie.title}</h3></a>
                               {/* <h5 style={{color:"white"}}>Rating: {movie.vote_average}</h5> */}
-                          <p>{movie.overview}</p>
+                          <p>{movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview}</p>
                               {/* <a href="{movie.homepage">Watch</a> */}
                           </Carousel.Caption>
                   </Carousel.Item>

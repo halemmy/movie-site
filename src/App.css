@@ -60,3 +60,13 @@
 .ratio-16x9 {
   --aspect-ratio: calc(9 / 16 * 100%);
 }
+
+.ratio-carousel {
+  --aspect-ratio: calc(7 / 16 * 100%);
+}
+
+@media (max-width: 997.98px) {
+  .ratio-carousel {
+    --aspect-ratio: calc(9 / 16 * 100%);
+  }
+}
