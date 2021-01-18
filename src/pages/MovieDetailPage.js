@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';
 import Upcoming from './Upcoming';
     
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_URL = process.env.REACT_APP_TMDB_API_URL;
 
 const MovieDetailPage = () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const API_URL = process.env.REACT_APP_TMDB_API_URL;
     const [movie, setMovie] = useState([]);
     const { id } = useParams();
     
@@ -33,7 +33,7 @@ const MovieDetailPage = () => {
             setLoading(false);
         }
         fetchData();
-    }, [API_KEY, API_URL]);
+    }, []);
     
     return (
         <div>
